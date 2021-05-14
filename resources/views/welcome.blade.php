@@ -1,37 +1,24 @@
 <x-app-layout>
-    <header class="bg-gray-50 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:flex xl:items-center xl:justify-between">
-            <div class="flex-1 min-w-0">
-                <h1 class="mt-2 text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
-                    Project Name
-                </h1>
-                <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-8">
-                    <div class="mt-2 flex items-center text-sm text-gray-500">
-                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                        User Name
-                    </div>
-                    <div class="mt-2 flex items-center text-sm text-gray-500">
-                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                        X collaborators
-                    </div>
-                    <div class="mt-2 flex items-center text-sm text-gray-500">
-                        <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                        X tasks
-                    </div>
-                </div>
-            </div>
-            <div class="mt-5 flex xl:mt-0 xl:ml-4">
-                <span class="hidden sm:block">
-                    <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-purple-500">
-                        <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" x-description="Heroicon name: solid/pencil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
-                        </svg>
-                        Manage
-                    </button>
-                </span>
-            </div>
-        </div>
-    </header>
+    <x-site.header
+        title="Project Name awesome"
+    >
+        <x-slot name="meta">
+            <x-projects.meta
+                :project="$project"
+            />
+        </x-slot>
+
+        <x-slot name="actions">
+            <span class="hidden sm:block">
+                <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-purple-500">
+                    <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" x-description="Heroicon name: solid/pencil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
+                    </svg>
+                    Manage
+                </button>
+            </span>
+        </x-slot>
+    </x-site.header>
 
     <section class="mt-8 max-w-3xl mx-auto grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
         <main class="space-y-6 lg:col-start-1 lg:col-span-2">
@@ -60,7 +47,11 @@
                                 </button>
                             </div>
                             <div>
-                                <img class="h-10 w-10 object-fit object-center rounded-full border-2" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="assigned users avatar" />
+                                <x-site.avatar
+                                    src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="User Avatar"
+                                    class="h-10 w-10"
+                                />
                             </div>
                         </div>
                     </a>
@@ -89,7 +80,11 @@
                                 </button>
                             </div>
                             <div>
-                                <img class="h-10 w-10 object-fit object-center rounded-full border-2" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="assigned users avatar" />
+                                <x-site.avatar
+                                    src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="User Avatar"
+                                    class="h-10 w-10"
+                                />
                             </div>
                         </div>
                     </a>
@@ -118,7 +113,11 @@
                                 </button>
                             </div>
                             <div>
-                                <img class="h-10 w-10 object-fit object-center rounded-full border-2" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="assigned users avatar" />
+                                <x-site.avatar
+                                    src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="User Avatar"
+                                    class="h-10 w-10"
+                                />
                             </div>
                         </div>
                     </a>
@@ -138,7 +137,11 @@
 
                 <ul class="divide-y divide-gray-200">
                     <li class="py-4 flex">
-                        <img class="h-10 w-10 rounded-full object-fit object-center border-2" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <x-site.avatar
+                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="User Avatar"
+                            class="h-10 w-10"
+                        />
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900">Calvin Hawkins</p>
                             <p class="text-sm text-gray-500">calvin.hawkins@example.com</p>
@@ -146,7 +149,11 @@
                     </li>
 
                     <li class="py-4 flex">
-                        <img class="h-10 w-10 rounded-full object-fit object-center border-2" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <x-site.avatar
+                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="User Avatar"
+                            class="h-10 w-10"
+                        />
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900">Kristen Ramos</p>
                             <p class="text-sm text-gray-500">kristen.ramos@example.com</p>
@@ -154,7 +161,11 @@
                     </li>
 
                     <li class="py-4 flex">
-                        <img class="h-10 w-10 rounded-full object-fit object-center border-2" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                        <x-site.avatar
+                            src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixqx=4cENLw1Nk9&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="User Avatar"
+                            class="h-10 w-10"
+                        />
                         <div class="ml-3">
                             <p class="text-sm font-medium text-gray-900">Ted Fox</p>
                             <p class="text-sm text-gray-500">ted.fox@example.com</p>
